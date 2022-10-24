@@ -56,10 +56,6 @@ class ListFeedBack(TemplateView):
 
         return context
 
-
-
-
-
 # class DoneView(View):
 #     def get(self, request):
 #         return render(request, 'feedback/done.html')
@@ -94,6 +90,3 @@ class ListFeedBack(TemplateView):
 
 # def done(request):
 #     return render(request, 'feedback/done.html')
-
-
-
