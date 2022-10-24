@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_additional %}
+<link rel="stylesheet" href="{% static 'horoscope/css/index.css' %}">
+{% endblock %}
+
+
+{% block title %}
+    Signs of Zodiac
+{% endblock %}
+
+{% block content %}
+<h1>Horoscope App</h1>
+    <ul>
+        {% for zodiac in zodiacs %}
+            <li>
+                <h2>
+                    <a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{ zodiac|title }}</a>
+                </h2>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+
+

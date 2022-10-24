@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_additional %}
+<link rel="stylesheet" href="{% static 'horoscope/css/index.css' %}">
+{% endblock %}
+
+{% block title %}
+    Elements of Zodiac
+{% endblock %}
+
+{% block content %}
+{% include 'includes/navbar.html'%}
+    <ul>
+        <h2>
+            {% for zodiac_element in zodiac_elements %}
+                <li>
+                    <a href="{% url 'element-name' element=zodiac_element %}">{{ zodiac_element|title }}</a>
+                </li>
+            {% endfor %}
+        </h2>
+    </ul>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
