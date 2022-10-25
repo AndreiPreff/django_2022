@@ -4,7 +4,7 @@ from .forms import FeedbackForm
 from .models import Feedback
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.db.models import F, Sum, Max, Min, Count, Avg, Value
+
 
 
 class FeedBackView(View):
@@ -53,6 +53,16 @@ class ListFeedBack(TemplateView):
         all_feedback = Feedback.objects.all()
         context['list_fb'] = all_feedback
         context['all_fb'] = all_feedback.count()
+
+        return context
+
+
+class DetailFeedBack(TemplateView):
+    template_name = 'feedback/detail_feedback.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['detail_feedback'] = Feedback.objects.get(id=kwargs['id_feedback'])
 
         return context
 
