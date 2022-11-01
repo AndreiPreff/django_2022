@@ -14,7 +14,7 @@
     </tr>
     </thead>
     <tbody>
-    {% for feedback in list_fb %}
+    {% for feedback in feedbacks %}
     <tr>
         <td>{{feedback.name}}</td>
         <td>{{feedback.surname}}</td>
@@ -24,7 +24,9 @@
     {% endfor %}
     </tbody>
 </table>
+
 <table>
-    <caption><h2>Всего отзывов - {{all_fb}}</h2></caption>
+    <caption><h2>Всего отзывов: {{feedbacks|length}} </h2></caption>
 </table>
+
 {% endblock %}

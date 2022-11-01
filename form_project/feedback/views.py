@@ -4,6 +4,7 @@ from .forms import FeedbackForm
 from .models import Feedback
 from django.views import View
 from django.views.generic.base import TemplateView
+from django.views.generic import ListView
 
 
 
@@ -45,16 +46,16 @@ class DoneView(TemplateView):
         return context
 
 
-class ListFeedBack(TemplateView):
+class ListFeedBack(ListView):
     template_name = 'feedback/list_feedback.html'
+    model = Feedback
+    context_object_name = 'feedbacks'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        all_feedback = Feedback.objects.all()
-        context['list_fb'] = all_feedback
-        context['all_fb'] = all_feedback.count()
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        filter_qs = queryset.filter(rating__gt=1)
+        return filter_qs
 
-        return context
 
 
 class DetailFeedBack(TemplateView):
@@ -65,6 +66,19 @@ class DetailFeedBack(TemplateView):
         context['detail_feedback'] = Feedback.objects.get(id=kwargs['id_feedback'])
 
         return context
+
+
+# class ListFeedBack(TemplateView):
+#     template_name = 'feedback/list_feedback.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         all_feedback = Feedback.objects.all()
+#         context['list_fb'] = all_feedback
+#         context['all_fb'] = all_feedback.count()
+#
+#         return context
+
 
 # class DoneView(View):
 #     def get(self, request):
