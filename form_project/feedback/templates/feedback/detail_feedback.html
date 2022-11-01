@@ -1,28 +1,17 @@
 {% extends 'feedback/base.html' %}
 
-{% block title %} Информация об отзыве с ID - {{feedback.id}} {% endblock %}
+{% block title %} Информация об отзыве с ID - {{feed.id}} {% endblock %}
 
 {% block content %}
 <table>
-    <caption><h2> Отзыв с ID - {{detail_feedback.id}} </h2></caption>
-
-    <tbody>
-    {% for feedback in list_fb %}
-    <tr>
-        <td>{{feedback.name}}</td>
-        <td>{{feedback.surname}}</td>
-        <td>{{feedback.rating}}</td>
-        <td>{{feedback.feedback}}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
+    <caption><h2> Отзыв с ID - {{feed.id}} </h2></caption>
 </table>
 <table>
      <caption><h1>Детали отзыва</h1></caption>
-     <caption><h2>Имя: {{detail_feedback.name|title}}</h2></caption>
-     <caption><h2>Фамилия: {{detail_feedback.surname|title}}</h2></caption>
-     <caption><h2>Отзыв: {{detail_feedback.feedback}}</h2></caption>
-     <caption><h2>Рейтинг: {{detail_feedback.rating}}</h2></caption>
-     <caption><h2>id: {{detail_feedback.id}}</h2></caption>
+     <caption><h2>Имя: {{feed.name|title}}</h2></caption>
+     <caption><h2>Фамилия: {{feed.surname|title}}</h2></caption>
+     <caption><h2>Отзыв: {{feed.feedback}}</h2></caption>
+     <caption><h2>Рейтинг: {{feed.rating}}</h2></caption>
+     <caption><h2>id: {{feed.id}}</h2></caption>
 </table>
 {% endblock %}
