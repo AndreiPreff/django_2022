@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import F, Sum, Max, Min, Count, Avg, Value
+from django.views.generic import ListView
 
 # Create your views here.
 from .models import Movie, Director, Actor
@@ -28,12 +29,24 @@ def show_one_movie(request, slug_movie:str):
     })
 
 
-def show_all_directors(request):
-    directors = Director.objects.order_by(F('first_name'))
-    return render(request, 'movie_app/all_directors.html', {
-        'directors': directors,
-        'total': directors.count()
-    })
+class ListDirectors(ListView):
+    template_name = 'movie_app/all_directors.html'
+    model = Director
+    context_object_name = 'directors'
+
+class ListActors(ListView):
+    template_name = 'movie_app/all_actors.html'
+    model = Actor
+    context_object_name = 'actors'
+
+
+
+# def show_all_directors(request):
+#     directors = Director.objects.order_by(F('first_name'))
+#     return render(request, 'movie_app/all_directors.html', {
+#         'directors': directors,
+#         'total': directors.count()
+#     })
 
 
 def show_one_director(request, id_director: int):
@@ -42,12 +55,12 @@ def show_one_director(request, id_director: int):
         'director': director
     })
 
-def show_all_actors(request):
-    actors = Actor.objects.order_by(F('first_name'))
-    return render(request, 'movie_app/all_actors.html', {
-        'actors': actors,
-        'total': actors.count()
-    })
+# def show_all_actors(request):
+#     actors = Actor.objects.order_by(F('first_name'))
+#     return render(request, 'movie_app/all_actors.html', {
+#         'actors': actors,
+#         'total': actors.count()
+#     })
 
 
 def show_one_actor(request, id_actor: int):
