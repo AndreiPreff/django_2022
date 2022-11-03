@@ -7,6 +7,7 @@
     <caption><h2>Список всех отзывов </h2></caption>
     <thead>
     <tr>
+        <th>ID</th>
         <th>Имя</th>
         <th>Фамилия</th>
         <th>Рейтинг</th>
@@ -16,6 +17,7 @@
     <tbody>
     {% for feedback in feedbacks %}
     <tr>
+        <td><a href="{{ feedback.get_url }}">{{feedback.pk}}</a></td>
         <td><a href="{{ feedback.get_url }}">{{feedback.name}}</a></td>
         <td><a href="{{ feedback.get_url }}">{{feedback.surname}}</a></td>
         <td><a href="{{ feedback.get_url }}">{{feedback.rating}}</a></td>

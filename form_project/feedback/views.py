@@ -5,17 +5,31 @@ from .models import Feedback
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView, UpdateView
 
 
-class FeedBackView(FormView):
+class FeedBackViewUpdate(UpdateView):
+    model = Feedback
+    fields = '__all__'
+    template_name = 'feedback/feedback.html'
+    success_url = '/done'
+
+
+class FeedBackView(CreateView):
+    model = Feedback
     form_class = FeedbackForm
     template_name = 'feedback/feedback.html'
     success_url = '/done'
 
-    def form_valid(self, form):
-        form.save()
-        return super(FeedBackView, self).form_valid(form)
+
+# class FeedBackView(FormView):
+#     form_class = FeedbackForm
+#     template_name = 'feedback/feedback.html'
+#     success_url = '/done'
+#
+#     def form_valid(self, form):
+#         form.save()
+#         return super(FeedBackView, self).form_valid(form)
 
 
 # class FeedBackView(View):
