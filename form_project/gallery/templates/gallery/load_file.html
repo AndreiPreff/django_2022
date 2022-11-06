@@ -5,8 +5,9 @@
 {% block content %}
 
 <h2>Загрузите файл</h2>
-    <form method="">
-        <input type="file">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image">
         <button type="submit">  Загрузить </button>
 
     </form>
