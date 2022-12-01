@@ -4,19 +4,31 @@
 
 {% block content %}
 <table>
-        <caption> <h2>Список всех отзывов </h2>   </caption>
-        <thead>
-        <tr>
-        <th>Имя</th>        <th>Фамилия</th>        <th>Рейтинг</th>        <th>Отзыв</th>
-        </tr>
-        </thead>
-            <tbody>
-            {% for feedback in list_fb %}
-            <tr>
-<td>{{feedback.name}}</td>  <td>{{feedback.surname}}</td>  <td>{{feedback.rating}}</td> <td>{{feedback.feedback}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-<table><caption> <h2>Всего отзывов - {{all_fb}}</h2> </caption></table>
+    <caption><h2>Список всех отзывов </h2></caption>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Рейтинг</th>
+        <th>Отзыв</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for feedback in feedbacks %}
+    <tr>
+        <td><a href="{{ feedback.get_url }}">{{feedback.pk}}</a></td>
+        <td><a href="{{ feedback.get_url }}">{{feedback.name}}</a></td>
+        <td><a href="{{ feedback.get_url }}">{{feedback.surname}}</a></td>
+        <td><a href="{{ feedback.get_url }}">{{feedback.rating}}</a></td>
+        <td><a href="{{ feedback.get_url }}">{{feedback.feedback}}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<table>
+    <caption><h2>Всего отзывов: {{feedbacks|length}} </h2></caption>
+</table>
+
 {% endblock %}

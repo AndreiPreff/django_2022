@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'feedback',
     'debug_toolbar',
+    'gallery',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = '/my_gallery/'
